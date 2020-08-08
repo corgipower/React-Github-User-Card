@@ -36,10 +36,8 @@ class App extends React.Component {
   render(){
     return(
       <div>
-        {this.state.user !== ''
-        && this.state.followers !== '' ?
-        <Card user={this.state.user} followers={this.state.followers} /> :
-        null}
+        <p>{this.state.user.login}</p>
+        <Card user={this.state.user} followers={this.state.followers} />
       </div>
     )
   }
