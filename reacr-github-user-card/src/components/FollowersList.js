@@ -6,7 +6,7 @@ class FollowersList extends Component {
     constructor() {
         super();
         this.state = {
-            user: corgipower,
+            user: 'corgipower',
             followers: [],
             userData: {},
         }
@@ -22,8 +22,11 @@ class FollowersList extends Component {
                 })
             })
             .catch(err => console.log(err));
+    }
 
-        Axios
+    componentDidUpdate(prevState, prevProps) {
+        if(prevState.userData !== this.state.userData) {
+            Axios
             .get(`https://api.github.com/users/${this.state.user}/followers`)
             .then(res => {
                 this.setState({
@@ -32,6 +35,7 @@ class FollowersList extends Component {
                 })
             })
             .catch(err => console.log(err));
+        }
     }
 
     render() {
